@@ -84,7 +84,7 @@ export const useTodoStore = defineStore('todos', () => {
   }
 
   const completedCount = computed(() => todos.value.filter(todo => todo.done).length)
-  s
+
   const totalCount = computed(() => todos.value.length)
 
   // Return all state and methods
