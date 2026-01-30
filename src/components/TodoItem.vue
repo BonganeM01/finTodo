@@ -2,7 +2,6 @@
 import { ref } from 'vue'
 import { useTodoStore } from '@/stores/todoStore'
 
-// Define component props
 const props = defineProps({
   id: Number,
   text: String,
@@ -13,13 +12,11 @@ const todoStore = useTodoStore()
 const isEditing = ref(false)
 const editingText = ref(props.text)
 
-// Activate edit mode for this todo
 const startEdit = () => {
   isEditing.value = true
   editingText.value = props.text
 }
 
-// Save the edited todo text and exit edit mode
 const saveEdit = () => {
   if (editingText.value.trim()) {
     todoStore.updateTodo(props.id, editingText.value)
@@ -27,18 +24,15 @@ const saveEdit = () => {
   isEditing.value = false
 }
 
-// Discard changes and exit edit mode
 const cancelEdit = () => {
   isEditing.value = false
   editingText.value = props.text
 }
 
-// Delete this todo
 const handleDelete = () => {
   todoStore.deleteTodo(props.id)
 }
 
-// Toggle completion status of this todo
 const handleToggleDone = () => {
   todoStore.toggleDone(props.id)
 }
@@ -46,6 +40,7 @@ const handleToggleDone = () => {
 
 <template>
   <li class="todo-item" :class="{ done: done }">
+
     <input
       type="checkbox"
       :checked="done"
@@ -68,9 +63,7 @@ const handleToggleDone = () => {
         class="input-edit"
         autofocus
       />
-      
       <button @click="saveEdit" class="btn btn-small btn-save">Save</button>
-      
       <button @click="cancelEdit" class="btn btn-small btn-cancel">Cancel</button>
     </div>
 

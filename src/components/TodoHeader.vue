@@ -6,8 +6,9 @@ const todoStore = useTodoStore()
 </script>
 
 <template>
+  <!-- Header section with title and progress -->
   <header class="header">
-    <h1>📝 Your Tasks 4 The Day:</h1>
+    <h1>📝 Your Tasks 4 Da Day:</h1>
     <p class="subtitle">{{ todoStore.completedCount }} of {{ todoStore.totalCount }} completed</p>
   </header>
 </template>

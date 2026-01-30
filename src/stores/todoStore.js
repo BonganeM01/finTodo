@@ -62,14 +62,15 @@ export const useTodoStore = defineStore('todos', () => {
   }
 
   // Fetch todos from DataHub API
-  const fetchTodos = async () => {
+  const fetchTodos = async (scene = 'multiple-items') => {
 
     loading.value = true
 
     error.value = null
     try {
-      // Call DataHub API endpoint
-      const response = await fetch('http://localhost:5678/api/todos/list')
+      // Call DataHub API endpoint with scene parameter
+      const url = `http://localhost:5678/data/bongane/todo`
+      const response = await fetch(url)
       if (!response.ok) {
         throw new Error('Failed to fetch todos')
       }
