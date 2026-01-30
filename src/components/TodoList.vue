@@ -1,187 +1,165 @@
 <script setup>
-import { ref } from 'vue'
+import { ref, onMounted } from 'vue'
 import { useTodoStore } from '@/stores/todoStore'
+import TodoItem from './TodoItem.vue'
 
-const props = defineProps({
-  id: Number,
-  text: String,
-  done: Boolean
+// Get todo store instance
+const todoStore = useTodoStore()
+const selectedScene = ref('multiple-items')
+
+// Fetch todos from DataHub when component mounts
+onMounted(() => {
+  todoStore.fetchTodos(selectedScene.value)
 })
 
-const todoStore = useTodoStore()
-const isEditing = ref(false)
-const editingText = ref(props.text)
-
-const startEdit = () => {
-  isEditing.value = true
-  editingText.value = props.text
-}
-
-const saveEdit = () => {
-  if (editingText.value.trim()) {
-    todoStore.updateTodo(props.id, editingText.value)
-  }
-  isEditing.value = false
-}
-
-const cancelEdit = () => {
-  isEditing.value = false
-  editingText.value = props.text
-}
-
-const handleDelete = () => {
-  todoStore.deleteTodo(props.id)
-}
-
-const handleToggleDone = () => {
-  todoStore.toggleDone(props.id)
+// Handle scene switching
+const switchScene = (scene) => {
+  selectedScene.value = scene
+  todoStore.fetchTodos(scene)
 }
 </script>
 
 <template>
-  <li class="todo-item" :class="{ done: done }">
-    <input
-      type="checkbox"
-      :checked="done"
-      @change="handleToggleDone"
-      class="checkbox"
-    />
-
-    <div v-if="!isEditing" class="todo-content">
-      <span class="todo-text">{{ text }}</span>
-      <button @click="startEdit" class="btn btn-small btn-edit">
-        ✏️ Edit
+  <div class="todos-section">
+    <div class="scene-selector">
+      <p class="scene-label">Test Scenes:</p>
+      <button
+        @click="switchScene('empty-list')"
+        :class="{ active: selectedScene === 'empty-list' }"
+        class="scene-btn"
+      >
+        🔲 Empty List
+      </button>
+      <button
+        @click="switchScene('multiple-items')"
+        :class="{ active: selectedScene === 'multiple-items' }"
+        class="scene-btn"
+      >
+        📋 Multiple Items
+      </button>
+      <button
+        @click="switchScene('system-error')"
+        :class="{ active: selectedScene === 'system-error' }"
+        class="scene-btn"
+      >
+        ⚠️ System Error
       </button>
     </div>
 
-    <div v-else class="edit-section">
-      <input
-        v-model="editingText"
-        @keyup.enter="saveEdit"
-        @keyup.escape="cancelEdit"
-        class="input-edit"
-        autofocus
-      />
-      <button @click="saveEdit" class="btn btn-small btn-save">Save</button>
-
-      <button @click="cancelEdit" class="btn btn-small btn-cancel">Cancel</button>
+    <div v-if="todoStore.loading" class="loading-state">
+      ⏳ Loading todos...
     </div>
 
-    <button @click="handleDelete" class="btn btn-small btn-delete">🗑️</button>
-  </li>
+    <div v-else-if="todoStore.error" class="error-state">
+      ❌ Error: {{ todoStore.error }}
+      <button @click="todoStore.fetchTodos" class="btn btn-retry">
+        Retry
+      </button>
+    </div>
+
+    <div v-else-if="todoStore.todos.length === 0" class="empty-state">
+      No todos yet. Add one to get started!
+    </div>
+
+    <ul v-else class="todos-list">
+      <TodoItem
+        v-for="todo in todoStore.todos"
+        :key="todo.id"
+        :id="todo.id"
+        :text="todo.text"
+        :done="todo.done"
+      />
+    </ul>
+  </div>
 </template>
 
 <style scoped>
-.todo-item {
-  display: flex;
-  align-items: center;
-  gap: 12px;
+.todos-section {
+  margin-top: 20px;
+}
+
+.scene-selector {
+  background: #f5f5f5;
   padding: 15px;
-  background: #f9f9f9;
   border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+.scene-label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #555;
   margin-bottom: 10px;
-  transition: all 0.3s;
-  border-left: 4px solid transparent;
 }
 
-.todo-item:hover {
-  background: #f0f0f0;
-  border-left-color: #4CAF50;
-}
-
-.todo-item.done {
-  opacity: 0.6;
-}
-
-.checkbox {
-  width: 20px;
-  height: 20px;
-  cursor: pointer;
-  accent-color: #4CAF50;
-}
-
-.todo-content {
-  flex: 1;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.todo-text {
-  flex: 1;
-  font-size: 1rem;
-  color: #333;
-}
-
-.todo-item.done .todo-text {
-  text-decoration: line-through;
-  color: #999;
-}
-
-.edit-section {
-  flex: 1;
-  display: flex;
-  gap: 8px;
-}
-
-.input-edit {
-  flex: 1;
-  padding: 8px;
-  border: 2px solid #4CAF50;
+.scene-btn {
+  padding: 8px 14px;
+  margin-right: 8px;
+  border: 2px solid #ddd;
   border-radius: 6px;
-  font-size: 0.95rem;
+  background: white;
+  color: #333;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.scene-btn:hover {
+  border-color: #4CAF50;
+  background: #f9f9f9;
+}
+
+.scene-btn.active {
+  background: #4CAF50;
+  color: white;
+  border-color: #4CAF50;
+}
+
+.todos-list {
+  list-style: none;
+}
+
+.empty-state {
+  text-align: center;
+  padding: 40px 20px;
+  color: #999;
+  font-size: 1.1rem;
+}
+
+.loading-state {
+  text-align: center;
+  padding: 40px 20px;
+  color: #666;
+  font-size: 1.1rem;
+}
+
+.error-state {
+  text-align: center;
+  padding: 40px 20px;
+  color: #f44336;
+  font-size: 1.1rem;
+  background: #ffebee;
+  border-radius: 8px;
+  border: 2px solid #f44336;
 }
 
 .btn {
-  padding: 12px 20px;
+  margin-top: 15px;
+  padding: 10px 20px;
   border: none;
   border-radius: 8px;
-  font-size: 1rem;
   cursor: pointer;
-  transition: all 0.3s;
   font-weight: 600;
+  transition: all 0.3s;
 }
 
-.btn-small {
-  padding: 6px 12px;
-  font-size: 0.85rem;
-  margin-left: 5px;
-}
-
-.btn-edit {
-  background: #FFC107;
+.btn-retry {
+  background: #2196F3;
   color: white;
 }
 
-.btn-edit:hover {
-  background: #e0a800;
-}
-
-.btn-save {
-  background: #4CAF50;
-  color: white;
-}
-
-.btn-save:hover {
-  background: #45a049;
-}
-
-.btn-cancel {
-  background: #999;
-  color: white;
-}
-
-.btn-cancel:hover {
-  background: #777;
-}
-
-.btn-delete {
-  background: #f44336;
-  color: white;
-  padding: 6px 10px;
-}
-
-.btn-delete:hover {
-  background: #da190b;
+.btn-retry:hover {
+  background: #0b7dda;
 }
 </style>

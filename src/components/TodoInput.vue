@@ -2,6 +2,7 @@
 import { ref } from 'vue'
 import { useTodoStore } from '@/stores/todoStore'
 
+// Get todo store instance
 const todoStore = useTodoStore()
 const input = ref('')
 
