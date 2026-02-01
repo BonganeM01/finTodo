@@ -9,6 +9,12 @@ export const useTodoStore = defineStore('todos', () => {
   const loading = ref(false)
   const error = ref(null)
 
+  const currentScene = ref('multiple-items')
+
+  const SetSystemError = () => {
+    error.value = "Scene = system error."
+  }
+
   // Add a new todo to the list
   const addTodo = (text) => {
     if (text.trim()) {
@@ -20,7 +26,7 @@ export const useTodoStore = defineStore('todos', () => {
       })
     }
   }
-
+  
   // Remove a todo from the list by its id
   const deleteTodo = (id) => {
     saveHistory()
@@ -62,19 +68,36 @@ export const useTodoStore = defineStore('todos', () => {
   }
 
   // Fetch todos from DataHub API
-  const fetchTodos = async (scene = 'multiple-items') => {
+  const fetchTodos = async (scene) => {
 
+    currentScene.value = scene
     loading.value = true
 
     error.value = null
     try {
       // Call DataHub API endpoint with scene parameter
-      const url = `http://localhost:5678/data/bongane/todo`
+      const url = `http://localhost:5678/data/bongane/todo?scene=${encodeURIComponent(scene)}`
       const response = await fetch(url)
       if (!response.ok) {
-        throw new Error('Failed to fetch todos')
+        throw new Error(`Failed to fetch todos (status ${response.status})`)
       }
       const data = await response.json()
+
+      //for debugging purposes
+      console.log('API response for scene', scene, data)
+      
+      if (data.scene === 'system-error' || data.error || data.status === 'error') {
+        // Use your SetSystemError for default, or override with response message if available
+        if (data.message || data.error) {
+          error.value = data.message || data.error
+        } else {
+          SetSystemError()
+        }
+        todos.value = []
+        return  // Early exit
+      }
+
+
       todos.value = data.data || []
     } catch (err) {
       error.value = err.message
@@ -94,6 +117,7 @@ export const useTodoStore = defineStore('todos', () => {
     history,
     loading,
     error,
+    currentScene,
     completedCount,
     totalCount,
     addTodo,
