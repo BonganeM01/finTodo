@@ -17,7 +17,7 @@ onMounted(() => {
 
 <template>
   <div class="home-page">
-    <AppHeader/>
+    <AppHeader />
     <TodoHeader />
     <TodoInput />
     <TodoList />

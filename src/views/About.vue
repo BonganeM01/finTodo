@@ -7,7 +7,7 @@ const todoStore = useTodoStore()
 
 <template>
     <div>
-        <AppHeader/>
+        <AppHeader />
     </div>
 
     <div class="container">

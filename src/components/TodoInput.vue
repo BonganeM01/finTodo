@@ -49,7 +49,7 @@ const handleAddTodo = () => {
 .input {
   flex: 1;
   padding: 12px;
-  border: 2px solid #ddd;
+  border: black 0.5px solid;
   border-radius: 8px;
   font-size: 1rem;
   transition: border-color 0.3s;
@@ -62,7 +62,7 @@ const handleAddTodo = () => {
 
 .btn {
   padding: 12px 20px;
-  border: none;
+  border: black 0.5px solid;
   border-radius: 8px;
   font-size: 1rem;
   cursor: pointer;
