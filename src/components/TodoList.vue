@@ -12,8 +12,11 @@ const selectedScene = ref('multiple-items')
 
 // Fetch todos from DataHub when component mounts
 onMounted(() => {
-  todoStore.fetchTodos(selectedScene.value)
+  if (todoStore.todos.length === 0) {
+    todoStore.fetchTodos(selectedScene.value)
+  }
 })
+
 </script>
 
 <template>

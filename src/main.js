@@ -14,7 +14,7 @@ app.use(pinia)
 app.use(router)
 
 //fetch todos on app start up
-const todoStore = useTodoStore()
-todoStore.fetchTodos()
+//const todoStore = useTodoStore()
+//todoStore.fetchTodos()
 
 app.mount('#app')
