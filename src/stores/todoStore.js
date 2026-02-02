@@ -94,7 +94,7 @@ export const useTodoStore = defineStore('todos', () => {
     error.value = null
 
     try {
-      // Call DataHub API endpoint with scene parameter
+      // Call DataHub API endpoint
       const url = `http://localhost:5678/data/bongane/todo?scene=${encodeURIComponent(scene)}`
       const response = await fetch(url)
       if (!response.ok) {
@@ -128,7 +128,7 @@ export const useTodoStore = defineStore('todos', () => {
     }
   }
 
-  // might change back to 'todos' later
+  // progress tracker
   const completedCount = computed(() => todos.value.filter(todo => todo.done).length)
   const totalCount = computed(() => todos.value ? todos.value.length : 0)
 

@@ -31,6 +31,13 @@ const handleAddTodo = () => {
     >
       ↶ Undo
     </button>
+    <button 
+      @click="todoStore.fetchTodos('multiple-items')" 
+      class="btn btn-sync"
+      :disabled="todoStore.loading"
+    >
+      {{ todoStore.loading ? 'Loading...' : '↻ Load from server' }}
+    </button>
   </div>
 </template>
 
