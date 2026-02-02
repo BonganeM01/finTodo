@@ -1,5 +1,3 @@
-<!---src/components/TodoInput.vue--->
-
 <script setup>
 import { ref } from 'vue'
 import { useTodoStore } from '@/stores/todoStore'
@@ -32,11 +30,11 @@ const handleAddTodo = () => {
       ↶ Undo
     </button>
     <button 
-      @click="todoStore.fetchTodos('multiple-items')" 
+      @click="todoStore.fetchTodos()" 
       class="btn btn-sync"
       :disabled="todoStore.loading"
     >
-      {{ todoStore.loading ? 'Loading...' : '↻ Load from server' }}
+      {{ todoStore.loading ? 'Loading...' : '↻ Reload' }}
     </button>
   </div>
 </template>

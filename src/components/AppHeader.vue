@@ -1,5 +1,3 @@
-<!-- src/components/AppHeader.vue -->
-
 <script setup>
 import { useTodoStore } from '@/stores/todoStore'
 import { useRoute } from 'vue-router'

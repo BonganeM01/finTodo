@@ -1,5 +1,3 @@
-<!---src/components/TodoHeader.vue--->
-
 <script setup>
 import { useTodoStore } from '@/stores/todoStore'
 

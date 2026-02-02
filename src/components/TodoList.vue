@@ -1,5 +1,3 @@
-<!---src/components/TodoList.vue--->
-
 <script setup>
 import { ref, onMounted } from 'vue'
 import { useTodoStore } from '@/stores/todoStore'
@@ -7,7 +5,6 @@ import TodoItem from './TodoItem.vue'
 
 // Get todo store instance
 const todoStore = useTodoStore()
-// default scene value
 const selectedScene = ref('multiple-items')
 
 // Fetch todos from DataHub when component mounts

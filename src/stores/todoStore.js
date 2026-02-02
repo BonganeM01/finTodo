@@ -1,6 +1,3 @@
-// ----src/stores/todoStore.js ----
-
-// Pinia store for managing todo state using Composition API
 import { defineStore } from 'pinia'
 import { ref, computed, watch } from 'vue'
 

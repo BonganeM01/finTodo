@@ -1,5 +1,3 @@
-<!---src/components/TodoItem.vue--->
-
 <script setup>
 import { ref } from 'vue'
 import { useTodoStore } from '@/stores/todoStore'
