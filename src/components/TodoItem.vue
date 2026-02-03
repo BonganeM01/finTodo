@@ -1,3 +1,4 @@
+<!-- src/components/TodoItem.vue -->
 <script setup>
 import { ref } from 'vue'
 import { useTodoStore } from '@/stores/todoStore'
@@ -76,12 +77,13 @@ const handleToggleDone = () => {
   display: flex;
   align-items: center;
   gap: 12px;
-  padding: 15px;
+  padding: 14px 16px;
   background: #f9f9f9;
-  border-radius: 8px;
+  border-radius: 10px;
   margin-bottom: 10px;
   transition: all 0.3s;
   border-left: 4px solid transparent;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
 }
 
 .todo-item:hover {
@@ -94,9 +96,9 @@ const handleToggleDone = () => {
 }
 
 .checkbox {
-  width: 20px;
-  height: 20px;
-  cursor: pointer;
+  width: 22px;
+  height: 22px;
+  flex-shrink: 0;
   accent-color: #4CAF50;
 }
 
@@ -105,11 +107,13 @@ const handleToggleDone = () => {
   display: flex;
   align-items: center;
   gap: 10px;
+  min-width: 0;
 }
 
 .todo-text {
   flex: 1;
-  font-size: 1rem;
+  font-size: 1.03rem;
+  word-break: break-word;
   color: #333;
 }
 
@@ -122,14 +126,16 @@ const handleToggleDone = () => {
   flex: 1;
   display: flex;
   gap: 8px;
+  flex-wrap: wrap;
 }
 
 .input-edit {
-  flex: 1;
-  padding: 8px;
+  flex: 1 1 180px;
+  min-width: 0;
+  padding: 10px 12px;
+  font-size: 1rem;
   border: 2px solid #4CAF50;
-  border-radius: 6px;
-  font-size: 0.95rem;
+  border-radius: 8px;
 }
 
 .btn {
@@ -143,9 +149,10 @@ const handleToggleDone = () => {
 }
 
 .btn-small {
-  padding: 6px 12px;
-  font-size: 0.85rem;
-  margin-left: 5px;
+  padding: 8px 14px;
+  font-size: 0.9rem;
+  min-width: 68px;
+  touch-action: manipulation;
 }
 
 .btn-edit {
@@ -183,5 +190,31 @@ const handleToggleDone = () => {
 
 .btn-delete:hover {
   background: #da190b;
+}
+
+@media (max-width: 480px) {
+  .todo-item {
+    padding: 12px 14px;
+    gap: 10px;
+  }
+
+  .todo-text {
+    font-size: 1.02rem;
+  }
+
+  .btn-small {
+    padding: 9px 12px;
+    font-size: 0.92rem;
+  }
+
+  .edit-section {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .input-edit {
+    font-size: 1.05rem;
+    padding: 12px;
+  }
 }
 </style>

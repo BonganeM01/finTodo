@@ -1,3 +1,4 @@
+<!-- src/components/TodoHeader.vue -->
 <script setup>
 import { useTodoStore } from '@/stores/todoStore'
 
@@ -19,13 +20,13 @@ const todoStore = useTodoStore()
 }
 
 .header h1 {
-  font-size: 2.5rem;
+  font-size: clamp(2rem, 6vw, 2.6rem);
   color: #333;
   margin-bottom: 10px;
 }
 
 .subtitle {
   color: #888;
-  font-size: 0.95rem;
+  font-size: clamp(0.95rem, 3.5vw, 1.1rem);
 }
 </style>

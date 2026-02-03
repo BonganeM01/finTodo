@@ -1,3 +1,4 @@
+<!-- src/components/TodoList.vue -->
 <script setup>
 import { ref, onMounted } from 'vue'
 import { useTodoStore } from '@/stores/todoStore'
@@ -53,30 +54,35 @@ onMounted(() => {
 
 .todos-list {
   list-style: none;
+  padding: 0;
+  margin: 0;
 }
 
 .empty-state {
   text-align: center;
-  padding: 40px 20px;
+  padding: 60px 20px;
   color: #999;
   font-size: 1.1rem;
+  line-height: 1.5;
 }
 
 .loading-state {
   text-align: center;
-  padding: 40px 20px;
+  padding: 60px 20px;
   color: #666;
   font-size: 1.1rem;
+  line-height: 1.5;
 }
 
 .error-state {
   text-align: center;
-  padding: 40px 20px;
+  padding: 60px 20px;
   color: #f44336;
   font-size: 1.1rem;
   background: #ffebee;
   border-radius: 8px;
   border: 2px solid #f44336;
+  line-height: 1.5;
 }
 
 .btn {
@@ -96,5 +102,14 @@ onMounted(() => {
 
 .btn-retry:hover {
   background: #0b7dda;
+}
+
+@media (max-width: 480px) {
+  .empty-state,
+  .loading-state,
+  .error-state {
+    padding: 48px 16px;
+    font-size: 1.05rem;
+  }
 }
 </style>

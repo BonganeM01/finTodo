@@ -1,3 +1,4 @@
+<!-- src/App.vue -->
 <script setup>
 </script>
 
@@ -12,14 +13,25 @@
 
 <style scoped>
 .app-wrapper {
-  min-height: 100vh;
+min-height: 100vh;
   background: #f8f9fa;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
 }
 
 .container {
-  max-width: 640px;
+  flex: 1;
+  width: 100%;
+  max-width: 720px;
   margin: 0 auto;
-  padding: 0 20px 40px;
+  padding: 0 auto 40px;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+@media (min-width: 640px) {
+  .container {
+    padding: 0 24px;
+  }
 }
 </style>

@@ -1,3 +1,4 @@
+<!-- src/components/AppHeader.vue -->
 <script setup>
 import { useTodoStore } from '@/stores/todoStore'
 import { useRoute } from 'vue-router'
@@ -38,43 +39,41 @@ const route = useRoute()
 .app-header {
   background: #ffffff;
   border-bottom: 1px solid #e0e0e0;
-  padding: 16px 0;
+  padding: 12px 0;
   margin-bottom: 24px;
   position: sticky;
   top: 0;
   z-index: 10;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.04);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
 }
 
 .header-container {
-  max-width: 640px;
-  margin: 0 auto;
-  padding: 0 20px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
-  gap: 16px;
+  gap: 12px;
+  padding: 0 4px;
 }
 
 .logo-title h1 {
-  font-size: 1.8rem;
+  font-size: clamp(1.6rem, 5vw, 2rem);
   color: #2c3e50;
   margin: 0;
 }
 
 .main-nav {
   display: flex;
-  gap: 32px;
+  gap: 24px;
 }
 
 .nav-link {
   text-decoration: none;
   color: #555;
   font-weight: 500;
-  font-size: 1.05rem;
+  font-size: clamp(0.95rem, 3.5vw, 1.05rem);
   padding: 8px 4px;
-  transition: all 0.2s;
+  transition: color 0.2s;
 }
 
 .nav-link:hover {
@@ -100,11 +99,19 @@ const route = useRoute()
   .header-container {
     flex-direction: column;
     text-align: center;
+    gap: 8px;
   }
   
   .main-nav {
-    gap: 24px;
-    margin-top: 8px;
+    width: 100%;
+    justify-content: center;
+    gap: 32px;
+    margin-top: 4px;
+  }
+
+  .nav-link {
+    font-size: 1rem;
+    padding: 6px 8px;
   }
 }
 </style>
