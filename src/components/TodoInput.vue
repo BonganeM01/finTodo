@@ -1,4 +1,3 @@
-<!-- src/components/TodoInput.vue -->
 <script setup>
 import { ref } from 'vue'
 import { useTodoStore } from '@/stores/todoStore'
@@ -60,18 +59,18 @@ const handleAddTodo = () => {
 .input-section {
   display: flex;
   align-items: center;
-  gap: 12px;
-  margin-bottom: 28px;
+  gap: 0.75rem;
+  margin-bottom: 1.75rem;
   flex-wrap: wrap;
 }
 
 .todo-input {
   flex: 1;
-  min-width: 180px;
-  padding: 12px 14px;
+  min-width: 11.25rem;
+  padding: 0.75rem 0.875rem;
   font-size: 1rem;
-  border: 1px solid #ccc;
-  border-radius: 10px;
+  border: 0.063rem solid #ccc;
+  border-radius: 0.625rem;
   background: white;
   transition: border-color 0.2s;
 }
@@ -79,12 +78,12 @@ const handleAddTodo = () => {
 .todo-input:focus {
   outline: none;
   border-color: #4CAF50;
-  box-shadow: 0 0 0 2px rgba(76, 175, 80, 0.2);
+  box-shadow: 0 0 0 0.125rem rgba(76, 175, 80, 0.2);
 }
 
 .button-group {
   display: flex;
-  gap: 8px;
+  gap: 0.5rem;
   flex-shrink: 0;
 }
 
@@ -92,10 +91,10 @@ const handleAddTodo = () => {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 6px;
-  padding: 10px 16px;
+  gap: 0.375rem;
+  padding: 0.625rem 1rem;
   border: none;
-  border-radius: 8px;
+  border-radius: 0.5rem;
   font-size: 0.95rem;
   font-weight: 500;
   cursor: pointer;
@@ -144,21 +143,21 @@ const handleAddTodo = () => {
   background: #757575;
 }
 
-@media (max-width: 620px) {
+@media (max-width: 38.75rem) {
   .input-section {
     flex-wrap: nowrap;
-    gap: 10px;
+    gap: 0.625rem;
   }
 
   .todo-input {
     font-size: 0.97rem;
-    padding: 11px 13px;
+    padding: 0.688rem 0.813rem;
   }
 
   .btn {
-    padding: 9px 13px;
+    padding: 0.563rem 0.813rem;
     font-size: 0.92rem;
-    min-width: 42px;
+    min-width: 2.625rem;
   }
 
   .text {
@@ -170,10 +169,10 @@ const handleAddTodo = () => {
   }
 }
 
-@media (max-width: 380px) {
+@media (max-width: 23.75rem) {
   .input-section {
     flex-wrap: wrap;
-    gap: 10px;
+    gap: 0.625rem;
   }
 
   .button-group {
@@ -183,8 +182,8 @@ const handleAddTodo = () => {
 
   .btn {
     flex: 1;
-    padding: 10px;
-    max-width: 80px;
+    padding: 0.625rem;
+    max-width: 5rem;
   }
 }
 

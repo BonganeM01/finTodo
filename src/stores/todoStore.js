@@ -1,4 +1,3 @@
-// src/stores/todoStore.js
 import { defineStore } from 'pinia'
 import { ref, computed, watch } from 'vue'
 
@@ -36,51 +35,77 @@ export const useTodoStore = defineStore('todos', () => {
 
   // Add a new todo to the list
   const addTodo = (text) => {
-    if (text.trim()) {
+    try{
+      if (text.trim()) {
       saveHistory()
       todos.value.push({
         id: Date.now(),
         text: text.trim(),
         done: false
       })
+      }
+    }catch(err){
+      console.error('Error adding todo:', err)
     }
   }
   
   // Remove a todo from the list by its id
   const deleteTodo = (id) => {
     saveHistory()
-    todos.value = todos.value.filter(todo => todo.id !== id)
+    try{
+      todos.value = todos.value.filter(todo => todo.id !== id)
+    }
+    catch(err){
+      console.error('Error deleting todo:', err)
+    }
   }
 
   // Toggle the completion status of a todo
   const toggleDone = (id) => {
     saveHistory()
-    const todo = todos.value.find(todo => todo.id === id)
-    if (todo) {
-      todo.done = !todo.done
+    try{
+      const todo = todos.value.find(todo => todo.id === id)
+      if (todo) {
+        todo.done = !todo.done
+      }
+    }catch(err){
+      console.error('Error toggling todo status:', err)
     }
   }
 
   // Update a task's text
   const updateTodo = (id, newText) => {
-    if (newText.trim()) {
+    try{
+      if (newText.trim()) {
       saveHistory()
       const todo = todos.value.find(todo => todo.id === id)
       if (todo) {
         todo.text = newText.trim()
       }
+      }
+    }catch(err){
+      console.error('Error updating todo:', err)
     }
   }
 
-  // History management for undo functionality
+  // History management for undo functionality. 
   const saveHistory = () => {
-    history.value.push(JSON.parse(JSON.stringify(todos.value)))
+    try{
+      history.value.push(JSON.parse(JSON.stringify(todos.value)))
+    }
+    catch(err){
+      console.error('Error saving history:', err)
+    }
   }
 
   const undo = () => {
-
-    if (history.value.length > 0) {
-      todos.value = history.value.pop()
+    try{
+      if (history.value.length > 0) {
+        todos.value = history.value.pop()
+      }
+    }
+    catch(err){
+      console.error('Error during undo:', err)
     }
   }
 
@@ -113,7 +138,6 @@ export const useTodoStore = defineStore('todos', () => {
         return
       }
 
-
       todos.value = data.data || []
       //clear history when fetchin new data
       history.value = []
@@ -130,7 +154,7 @@ export const useTodoStore = defineStore('todos', () => {
   const completedCount = computed(() => todos.value.filter(todo => todo.done).length)
   const totalCount = computed(() => todos.value ? todos.value.length : 0)
 
-  // Return all state and methods
+  // Expose all state and methods
   return {
     savedTodos,
     todos,

@@ -1,8 +1,6 @@
-<!-- src/components/TodoHeader.vue -->
 <script setup>
 import { useTodoStore } from '@/stores/todoStore'
 
-// Get todo store instance
 const todoStore = useTodoStore()
 </script>
 
@@ -16,13 +14,13 @@ const todoStore = useTodoStore()
 <style scoped>
 .header {
   text-align: center;
-  margin-bottom: 30px;
+  margin-bottom: 1.875rem;
 }
 
 .header h1 {
   font-size: clamp(2rem, 6vw, 2.6rem);
   color: #333;
-  margin-bottom: 10px;
+  margin-bottom: 0.625rem;
 }
 
 .subtitle {

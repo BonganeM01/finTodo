@@ -1,4 +1,3 @@
-<!-- src/views/Home.vue -->
 <script setup>
 import AppHeader from '@/components/AppHeader.vue'
 import TodoHeader from '@/components/TodoHeader.vue'

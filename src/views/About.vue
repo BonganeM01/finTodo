@@ -22,7 +22,7 @@ const todoStore = useTodoStore()
         <h2>What is this?</h2>
         <p>
           A lightweight, modern todo app built with Vue 3 + Pinia + Composition API.<br>
-          It fetches initial todos from a custom DataHub API and lets you add, edit, complete, delete, and undo changes.
+          It fetches initial todos from a custom DataHub API and lets you add, edit, mark as done, delete, and undo changes.
         </p>
       </section>
 
@@ -30,11 +30,11 @@ const todoStore = useTodoStore()
         <h2>Features</h2>
         <ul>
           <li> Load todos based on scene from backend</li>
-          <li> Add new tasks quickly</li>
-          <li> Inline editing</li>
+          <li> Add new tasks</li>
+          <li> Edit existing tasks</li>
           <li> Mark as done / undone</li>
           <li> Delete tasks</li>
-          <li> Undo last action (multi-step)</li>
+          <li> Undo last action</li>
           <li> Live completion progress</li>
           <li> Clean, responsive design</li>
         </ul>
@@ -47,7 +47,7 @@ const todoStore = useTodoStore()
           <li>Pinia (state management)</li>
           <li>Vue Router (for About page)</li>
           <li>Custom DataHub API (<code>localhost:5678</code>)</li>
-          <li>Pure CSS (scoped styles, no external UI library)</li>
+          <li>Pure CSS</li>
         </ul>
       </section>
 
@@ -73,21 +73,21 @@ const todoStore = useTodoStore()
 
 <style scoped>
 .container {
-  max-width: 600px;
+  max-width: 37.5rem;
   margin: 0 auto;
-  padding: 20px;
+  padding: 1.25rem;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 }
 
 .header {
   text-align: center;
-  margin-bottom: 40px;
+  margin-bottom: 2.5rem;
 }
 
 .header h1 {
   font-size: clamp(2rem, 6vw, 2.6rem);
   color: #333;
-  margin-bottom: 8px;
+  margin-bottom: 0.5rem;
 }
 
 .subtitle {
@@ -98,25 +98,25 @@ const todoStore = useTodoStore()
 .about-content {
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 1.5rem;
 }
 
 .card {
   background: #f9f9f9;
-  border-radius: 12px;
-  padding: 24px;
-  border-left: 5px solid #4CAF50;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  border-radius: 0.75rem;
+  padding: 1.5rem;
+  border-left: 0.313rem solid #4CAF50;
+  box-shadow: 0 0.125rem 0.5rem rgba(0,0,0,0.06);
   transition: all 0.2s;
 }
 
 .card:hover {
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  box-shadow: 0 0.25rem 0.75rem rgba(0,0,0,0.1);
 }
 
 .card h2 {
-  margin-bottom: 16px;
+  margin-bottom: 1rem;
   color: #2c3e50;
   font-size: 1.5rem;
 }
@@ -128,14 +128,14 @@ const todoStore = useTodoStore()
 }
 
 .card ul {
-  padding-left: 20px;
+  padding-left: 1.25rem;
   list-style: none;
 }
 
 .card ul li {
-  margin-bottom: 10px;
+  margin-bottom: 0.625rem;
   position: relative;
-  padding-left: 24px;
+  padding-left: 1.5rem;
 }
 
 .card ul li::before {
@@ -153,10 +153,10 @@ const todoStore = useTodoStore()
 
 .about-footer {
   text-align: center;
-  margin-top: 50px;
-  padding: 20px 0;
+  margin-top: 3.125rem;
+  padding: 1.25rem 0;
   color: #777;
   font-size: 0.95rem;
-  border-top: 1px solid #eee;
+  border-top: 0.063rem solid #eee;
 }
 </style>

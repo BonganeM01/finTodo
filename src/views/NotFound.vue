@@ -1,4 +1,3 @@
-<!-- src/views/NotFound.vue -->
 <script setup>
 import AppHeader from '@/components/AppHeader.vue'
 import { useRouter } from 'vue-router'
@@ -47,18 +46,18 @@ const goHome = () => {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 20px;
-  max-width: 640px;
+  padding: 1.25rem;
+  max-width: 40rem;
   margin: 0 auto;
   width: 100%;
 }
 
 .error-content {
   text-align: center;
-  padding: 40px 20px;
+  padding: 3rem 1.25rem;
   background: white;
-  border-radius: 16px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  border-radius: 1rem;
+  box-shadow: 0 0.25rem 1.25rem rgba(0, 0, 0, 0.08);
   max-width: 480px;
   width: 100%;
 }
@@ -68,47 +67,47 @@ const goHome = () => {
   font-weight: 800;
   color: #4CAF50;
   line-height: 0.9;
-  margin-bottom: 16px;
+  margin-bottom: 1rem;
   opacity: 0.15;
 }
 
 h1 {
   font-size: 2.2rem;
-  margin-bottom: 16px;
+  margin-bottom: 1rem;
   color: #333;
 }
 
 .description {
   font-size: 1.1rem;
   color: #666;
-  margin-bottom: 32px;
+  margin-bottom: 2rem;
   line-height: 1.5;
 }
 
 .actions {
-  margin-bottom: 32px;
+  margin-bottom: 2rem;
 }
 
 .btn {
   display: inline-block;
-  padding: 14px 32px;
+  padding: 0.875rem 2rem;
   background: #4CAF50;
   color: white;
   font-size: 1.1rem;
   font-weight: 600;
   border: none;
-  border-radius: 10px;
+  border-radius: 0.625rem;
   cursor: pointer;
   transition: all 0.2s;
 }
 
 .btn:hover {
   background: #45a049;
-  transform: translateY(-2px);
-  box-shadow: 0 6px 16px rgba(76, 175, 80, 0.25);
+  transform: translateY(-0.125rem);
+  box-shadow: 0 0.375rem 1rem rgba(76, 175, 80, 0.25);
 }
 
-@media (max-width: 480px) {
+@media (max-width: 30rem) {
   .error-code {
     font-size: clamp(4rem, 18vw, 8rem);
   }
@@ -118,7 +117,7 @@ h1 {
   }
 
   .btn {
-    padding: 12px 28px;
+    padding: 0.75rem 1.75rem;
     font-size: 1rem;
   }
 }
@@ -129,7 +128,7 @@ h1 {
 
 @keyframes bounce {
   0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
-  40% { transform: translateY(-20px); }
-  60% { transform: translateY(-10px); }
+  40% { transform: translateY(-1.25rem); }
+  60% { transform: translateY(-0.625rem); }
 }
 </style>

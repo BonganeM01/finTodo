@@ -1,20 +1,10 @@
-<!-- src/components/TodoList.vue -->
 <script setup>
 import { ref, onMounted } from 'vue'
 import { useTodoStore } from '@/stores/todoStore'
 import TodoItem from './TodoItem.vue'
 
-// Get todo store instance
 const todoStore = useTodoStore()
 const selectedScene = ref('multiple-items')
-
-// Fetch todos from DataHub when component mounts
-onMounted(() => {
-  if (todoStore.todos.length === 0) {
-    todoStore.fetchTodos(selectedScene.value)
-  }
-})
-
 </script>
 
 <template>
@@ -49,7 +39,7 @@ onMounted(() => {
 
 <style scoped>
 .todos-section {
-  margin-top: 20px;
+  margin-top: 1.25rem;
 }
 
 .todos-list {
@@ -60,7 +50,7 @@ onMounted(() => {
 
 .empty-state {
   text-align: center;
-  padding: 60px 20px;
+  padding: 3.75rem 1.25rem;
   color: #999;
   font-size: 1.1rem;
   line-height: 1.5;
@@ -68,7 +58,7 @@ onMounted(() => {
 
 .loading-state {
   text-align: center;
-  padding: 60px 20px;
+  padding: 3.75rem 1.25rem;
   color: #666;
   font-size: 1.1rem;
   line-height: 1.5;
@@ -76,20 +66,20 @@ onMounted(() => {
 
 .error-state {
   text-align: center;
-  padding: 60px 20px;
+  padding: 3.75rem 1.25rem;
   color: #f44336;
   font-size: 1.1rem;
   background: #ffebee;
-  border-radius: 8px;
-  border: 2px solid #f44336;
+  border-radius: 0.5rem;
+  border: 0.125rem solid #f44336;
   line-height: 1.5;
 }
 
 .btn {
-  margin-top: 15px;
-  padding: 10px 20px;
+  margin-top: 0.938rem;
+  padding: 0.625rem 1.25rem;
   border: none;
-  border-radius: 8px;
+  border-radius: 0.5rem;
   cursor: pointer;
   font-weight: 600;
   transition: all 0.3s;
@@ -104,11 +94,11 @@ onMounted(() => {
   background: #0b7dda;
 }
 
-@media (max-width: 480px) {
+@media (max-width: 30rem) {
   .empty-state,
   .loading-state,
   .error-state {
-    padding: 48px 16px;
+    padding: 3rem 1rem;
     font-size: 1.05rem;
   }
 }

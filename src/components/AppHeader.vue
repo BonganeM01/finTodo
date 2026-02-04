@@ -1,9 +1,6 @@
-<!-- src/components/AppHeader.vue -->
 <script setup>
-import { useTodoStore } from '@/stores/todoStore'
 import { useRoute } from 'vue-router'
 
-const todoStore = useTodoStore()
 const route = useRoute()
 </script>
 
@@ -38,22 +35,23 @@ const route = useRoute()
 <style scoped>
 .app-header {
   background: #ffffff;
-  border-bottom: 1px solid #e0e0e0;
-  padding: 12px 0;
-  margin-bottom: 24px;
+  border-bottom: 0.1rem solid #e0e0e0;
+  padding: 0.75rem 0;
+  margin-bottom: 1.5rem;
   position: sticky;
   top: 0;
   z-index: 10;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  box-shadow: 0 0.125rem 0.5rem rgba(0,0,0,0.06);
 }
 
 .header-container {
   display: flex;
+  max-height: 2.5rem;
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
-  gap: 12px;
-  padding: 0 4px;
+  gap: 1rem;
+  padding: 0 0.25rem;
 }
 
 .logo-title h1 {
@@ -64,7 +62,7 @@ const route = useRoute()
 
 .main-nav {
   display: flex;
-  gap: 24px;
+  gap: 1.5rem;
 }
 
 .nav-link {
@@ -72,7 +70,7 @@ const route = useRoute()
   color: #555;
   font-weight: 500;
   font-size: clamp(0.95rem, 3.5vw, 1.05rem);
-  padding: 8px 4px;
+  padding: 0.5rem 0.25rem;
   transition: color 0.2s;
 }
 
@@ -82,7 +80,7 @@ const route = useRoute()
 
 .nav-link.active {
   color: #4CAF50;
-  border-bottom: 3px solid #4CAF50;
+  border-bottom: 0.188rem solid #4CAF50;
   font-weight: 600;
 }
 
@@ -90,28 +88,28 @@ const route = useRoute()
   text-align: center;
   font-size: 0.95rem;
   color: #777;
-  margin-top: 8px;
+  margin-top: 0.5rem;
   font-weight: 500;
 }
 
 /* Mobile adjustments */
-@media (max-width: 500px) {
+@media (max-width: 31.25rem) {
   .header-container {
     flex-direction: column;
     text-align: center;
-    gap: 8px;
+    gap: 0.5rem;
   }
   
   .main-nav {
     width: 100%;
     justify-content: center;
-    gap: 32px;
-    margin-top: 4px;
+    gap: 2rem;
+    margin-top: 0.25rem;
   }
 
   .nav-link {
     font-size: 1rem;
-    padding: 6px 8px;
+    padding: 0.375rem 0.5rem;
   }
 }
 </style>

@@ -23,15 +23,15 @@ min-height: 100vh;
 .container {
   flex: 1;
   width: 100%;
-  max-width: 720px;
+  max-width: 45rem;
   margin: 0 auto;
-  padding: 0 auto 40px;
+  padding: 0 auto 2.5rem;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 }
 
-@media (min-width: 640px) {
+@media (min-width: 40rem) {
   .container {
-    padding: 0 24px;
+    padding: 0 1.5rem;
   }
 }
 </style>
