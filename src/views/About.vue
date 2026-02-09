@@ -1,4 +1,3 @@
-<!-- src/views/About.vue -->
 <script setup>
 import AppHeader from '@/components/AppHeader.vue'
 import { useTodoStore } from '@/stores/todoStore'

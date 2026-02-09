@@ -14,7 +14,7 @@
 <style scoped>
 .app-wrapper {
 min-height: 100vh;
-  background: #f8f9fa;
+  background: #ffffff;
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -29,7 +29,7 @@ min-height: 100vh;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 }
 
-@media (min-width: 40rem) {
+@media (max-width: 40rem) {
   .container {
     padding: 0 1.5rem;
   }
