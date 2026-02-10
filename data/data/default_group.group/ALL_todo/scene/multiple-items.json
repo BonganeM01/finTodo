@@ -1,0 +1,33 @@
+{
+  "sceneName": "multiple-items",
+  "data": {
+    "data": [
+      {
+        "id": 1,
+        "text": "Create a Vue.js todo app",
+        "done": true
+      },
+      {
+        "id": 2,
+        "text": "Learn Pinia state management",
+        "done": false
+      },
+      {
+        "id": 3,
+        "text": "Integrate macaca datahub",
+        "done": false
+      },
+      {
+        "id": 3,
+        "text": "Visit mini apps playground",
+        "done": false
+      }
+    ]
+  },
+  "interfaceUniqId": "cb2732e8-78f2-4a19-a667-7dceae10ef56",
+  "contextConfig": {
+    "responseHeaders": {}
+  },
+  "uniqId": "5b1eb743-d57d-4b80-adc5-b6efe2c90b46",
+  "format": "json"
+}

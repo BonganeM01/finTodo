@@ -15,8 +15,8 @@ const __dirname = path.dirname(__filename)
 
 const datahubConfig = {
   port: 5678,
-  hostname: '127.0.0.1',
-  store: path.join(__dirname, '..', 'data'),
+  hostname: '0.0.0.0',
+  store: './data',
   proxy: {
     '/api': {
       hub: 'sample',
@@ -50,10 +50,18 @@ export default defineConfig({
       '@': fileURLToPath(new URL('./src', import.meta.url))
     },
   },
-  server: { proxy: {
+  server: { 
+    cors: true,
+    proxy: {
     '/api': {
-      target: `http://${datahubConfig.hostname}:${datahubConfig.port}`,
+      target: `http://${datahubConfig.hostname}:${datahubConfig.port}/data/data/`,
       changeOrigin: true,
+      rewrite: (path) => path.replace(/^\/api/, ''),
+      configure: (proxy, _options) => {
+        proxy.on('proxyReq', (proxyReq, req, _res) => {
+          console.log('Proxying: ', req.method, req.url, ': ', `http://${datahubConfig.hostname}:${datahubConfig.port}${proxyReq.path}`)
+        })
+      },
       secure: false,
     }
   }}

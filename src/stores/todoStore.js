@@ -118,7 +118,9 @@ export const useTodoStore = defineStore('todos', () => {
 
     try {
       // Call DataHub API endpoint
-      const url = `http://localhost:5678/data/bongane/todo?scene=${encodeURIComponent(scene)}`
+      // 
+      const url = `/api/todo?scene=${encodeURIComponent(scene)}`
+      // const url = `http://localhost:5678/data/bongane/todo?scene=${encodeURIComponent(scene)}`
       const response = await fetch(url)
       if (!response.ok) {
         throw new Error(`Failed to fetch todos (status ${response.status})`)
