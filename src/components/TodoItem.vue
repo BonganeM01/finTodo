@@ -75,13 +75,14 @@ const handleToggleDone = () => {
 .todo-item {
   display: flex;
   align-items: center;
-  gap: 12px;
-  padding: 15px;
+  gap: 0.75rem;
+  padding: 0.875rem 1rem;
   background: #f9f9f9;
-  border-radius: 8px;
-  margin-bottom: 10px;
+  border-radius: 0.625rem;
+  margin-bottom: 0.625rem;
   transition: all 0.3s;
-  border-left: 4px solid transparent;
+  border-left: 0.25rem solid transparent;
+  box-shadow: 0 0.063rem 0.188rem rgba(0,0,0,0.05);
 }
 
 .todo-item:hover {
@@ -94,9 +95,9 @@ const handleToggleDone = () => {
 }
 
 .checkbox {
-  width: 20px;
-  height: 20px;
-  cursor: pointer;
+  width: 1.375rem;
+  height: 1.375rem;
+  flex-shrink: 0;
   accent-color: #4CAF50;
 }
 
@@ -104,12 +105,14 @@ const handleToggleDone = () => {
   flex: 1;
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 0.625rem;
+  min-width: 0;
 }
 
 .todo-text {
   flex: 1;
-  font-size: 1rem;
+  font-size: 1.03rem;
+  word-break: break-word;
   color: #333;
 }
 
@@ -121,21 +124,23 @@ const handleToggleDone = () => {
 .edit-section {
   flex: 1;
   display: flex;
-  gap: 8px;
+  gap: 0.5rem;
+  flex-wrap: wrap;
 }
 
 .input-edit {
-  flex: 1;
-  padding: 8px;
-  border: 2px solid #4CAF50;
-  border-radius: 6px;
-  font-size: 0.95rem;
+  flex: 1 1 180px;
+  min-width: 0;
+  padding: 0.625rem 0.75rem;
+  font-size: 1rem;
+  border: 0.125rem solid #4CAF50;
+  border-radius: 0.5rem;
 }
 
 .btn {
-  padding: 12px 20px;
+  padding: 0.75rem 1rem;
   border: none;
-  border-radius: 8px;
+  border-radius: 0.5rem;
   font-size: 1rem;
   cursor: pointer;
   transition: all 0.3s;
@@ -143,9 +148,10 @@ const handleToggleDone = () => {
 }
 
 .btn-small {
-  padding: 6px 12px;
-  font-size: 0.85rem;
-  margin-left: 5px;
+  padding: 0.5rem 0.875rem;
+  font-size: 0.9rem;
+  min-width: 4.25rem;
+  touch-action: manipulation;
 }
 
 .btn-edit {
@@ -178,10 +184,36 @@ const handleToggleDone = () => {
 .btn-delete {
   background: #f44336;
   color: white;
-  padding: 6px 10px;
+  padding: 0.375rem 0.625rem;
 }
 
 .btn-delete:hover {
   background: #da190b;
+}
+
+@media (max-width: 30rem) {
+  .todo-item {
+    padding: 0.75rem 0.875rem;
+    gap: 0.625rem;
+  }
+
+  .todo-text {
+    font-size: 1.02rem;
+  }
+
+  .btn-small {
+    padding: 0.563rem 0.813rem;
+    font-size: 0.92rem;
+  }
+
+  .edit-section {
+    flex-direction: column;
+    gap: 0.625rem;
+  }
+
+  .input-edit {
+    font-size: 1.05rem;
+    padding: 0.75rem;
+  }
 }
 </style>

@@ -1,28 +1,37 @@
+<!-- src/App.vue -->
 <script setup>
-import TodoHeader from './components/TodoHeader.vue'
-import TodoInput from './components/TodoInput.vue'
-import TodoList from './components/TodoList.vue'
 </script>
 
 <template>
-  <div class="container">
-    <TodoHeader />
-    <TodoInput />
-    <TodoList />
+  <div class="app-wrapper">
+    <AppHeader />
+    <div class="container">
+      <router-view />
+    </div>
   </div>
 </template>
 
 <style scoped>
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+.app-wrapper {
+min-height: 100vh;
+  background: #ffffff;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
 }
 
 .container {
-  max-width: 600px;
+  flex: 1;
+  width: 100%;
+  max-width: 45rem;
   margin: 0 auto;
-  padding: 20px;
+  padding: 0 auto 2.5rem;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+@media (max-width: 40rem) {
+  .container {
+    padding: 0 1.5rem;
+  }
 }
 </style>

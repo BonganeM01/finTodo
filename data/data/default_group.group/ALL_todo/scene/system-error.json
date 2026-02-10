@@ -1,0 +1,12 @@
+{
+  "sceneName": "system-error",
+  "data": {
+    "status": "error"
+  },
+  "interfaceUniqId": "cb2732e8-78f2-4a19-a667-7dceae10ef56",
+  "contextConfig": {
+    "responseHeaders": {}
+  },
+  "uniqId": "9d8337f8-aa22-4985-b5b1-8f82951f7e12",
+  "format": "json"
+}
