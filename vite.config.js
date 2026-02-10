@@ -14,7 +14,7 @@ const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
 
 const datahubConfig = {
-  port: 5678,
+  port: 9200,
   hostname: '0.0.0.0',
   store: './data',
   proxy: {
