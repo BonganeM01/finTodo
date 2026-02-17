@@ -6,13 +6,33 @@ import TodoList from '@/components/TodoList.vue'
 import { useTodoStore } from '@/stores/todoStore'
 import { onMounted } from 'vue'
 
-const todoStore = useTodoStore()
+// Send message to Mini Program.
+my.postMessage({
+  action: {
+    type: "typeOfAction",
+    detail: {
+      // Data that needs to be sent to the Mini Program
+    },
+  },
+});
 
-onMounted(() => {
-  if (todoStore.todos.length === 0) {
-    todoStore.fetchTodos('multiple-items')
+// Receiving message from Mini Program.
+my.onMessage = (data) => {
+  if (data.action.type === "typeOfAction") {
+    // "if" truthy handle and execute what needs to happen
   }
-})
+};
+
+const onHandlePostMessage = () => {
+  my.postMessage({
+    action: {
+      type: "typeOfAction",
+      detail: {
+        // Data that needs to be sent to the Mini Program
+      },
+    },
+  });
+};
 </script>
 
 <template>
@@ -20,9 +40,24 @@ onMounted(() => {
     <AppHeader />
     <TodoHeader />
     <TodoInput />
-    <TodoList />
+    <button
+        @click="onHandlePostMessage"
+        class="btn btn-test"
+        title="Test"
+      >
+        <span class="text">Test</span>
+      </button>
   </div>
 </template>
 
 <style scoped>
+.btn-test {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 4px;
+}
 </style>

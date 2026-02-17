@@ -1,21 +1,5 @@
 <!-- src/App.vue -->
 <script type="text/javascript" src="https://appx/web-view.min.js">
-// Send message to Mini Program.
-my.postMessage({
-  action: {
-    type: "typeOfAction",
-    detail: {
-      // Data that needs to be sent to the Mini Program
-    },
-  },
-});
-
-// Receiving message from Mini Program.
-my.onMessage = (data) => {
-  if (data.action.type === "typeOfAction") {
-    // "if" truthy handle and execute what needs to happen
-  }
-};
 </script>
 
 <template>
