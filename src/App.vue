@@ -1,6 +1,8 @@
 <!-- src/App.vue -->
+<script type="text/javascript" src="https://appx/web-view.min.js"></script>
 <script setup>
 </script>
+
 
 <template>
   <div class="app-wrapper">

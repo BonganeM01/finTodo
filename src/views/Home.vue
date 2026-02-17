@@ -1,35 +1,44 @@
-<script setup type="text/javascript" src="https://appx/web-view.min.js">
+<script setup>
 import AppHeader from '@/components/AppHeader.vue'
 import TodoHeader from '@/components/TodoHeader.vue'
 import TodoInput from '@/components/TodoInput.vue'
 
+import { useTodoStore } from '@/stores/todoStore'
+import { onMounted } from 'vue'
+
+const todoStore = useTodoStore()
+
+onMounted(() => {
+  todoStore.fetchTodos()
+})
+
 // Send message to Mini Program.
-my.postMessage({
-  action: {
-    type: "typeOfAction",
-    detail: {
-      // Data that needs to be sent to the Mini Program
-    },
-  },
-});
+// my.postMessage({
+//   action: {
+//     type: "typeOfAction",
+//     detail: {
+//       // Data that needs to be sent to the Mini Program
+//     },
+//   },
+// });
 
-// Receiving message from Mini Program.
-my.onMessage = (data) => {
-  if (data.action.type === "typeOfAction") {
-    // "if" truthy handle and execute what needs to happen
-  }
-};
+// // Receiving message from Mini Program.
+// my.onMessage = (data) => {
+//   if (data.action.type === "typeOfAction") {
+//     // "if" truthy handle and execute what needs to happen
+//   }
+// };
 
-const onHandlePostMessage = () => {
-  my.postMessage({
-    action: {
-      type: "typeOfAction",
-      detail: {
-        // Data that needs to be sent to the Mini Program
-      },
-    },
-  });
-};
+// const onHandlePostMessage = () => {
+//   my.postMessage({
+//     action: {
+//       type: "typeOfAction",
+//       detail: {
+//         // Data that needs to be sent to the Mini Program
+//       },
+//     },
+//   });
+// };
 </script>
 
 <template>
