@@ -1,10 +1,7 @@
-<script setup>
+<script setup type="text/javascript" src="https://appx/web-view.min.js">
 import AppHeader from '@/components/AppHeader.vue'
 import TodoHeader from '@/components/TodoHeader.vue'
 import TodoInput from '@/components/TodoInput.vue'
-import TodoList from '@/components/TodoList.vue'
-import { useTodoStore } from '@/stores/todoStore'
-import { onMounted } from 'vue'
 
 // Send message to Mini Program.
 my.postMessage({
