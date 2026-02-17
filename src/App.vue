@@ -1,5 +1,5 @@
 <!-- src/App.vue -->
-<script type="text/javascript" src="https://appx/web-view.min.js">
+<script setup>
 </script>
 
 <template>
