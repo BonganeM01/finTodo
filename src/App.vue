@@ -1,6 +1,8 @@
 <!-- src/App.vue -->
+
 <script setup>
 </script>
+
 
 <template>
   <div class="app-wrapper">
